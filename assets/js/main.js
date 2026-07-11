@@ -126,12 +126,12 @@ function initSkillRadar() {
   
   const data = {
     labels: [
-      'Quản lý tệp tin (File Ops)',
-      'Tìm kiếm học thuật (Search)',
+      'Quản lý tệp tin',
+      'Tìm kiếm học thuật',
       'Prompt Engineering',
-      'Hợp tác số (Collab)',
-      'Sáng tạo AI tạo sinh (GenAI)',
-      'AI có trách nhiệm (Responsible AI)'
+      'Hợp tác số',
+      'Sáng tạo GenAI',
+      'AI có trách nhiệm'
     ],
     datasets: [{
       label: 'Mức độ thông thạo (%)',
