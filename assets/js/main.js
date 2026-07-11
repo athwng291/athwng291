@@ -153,6 +153,14 @@ function initSkillRadar() {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      layout: {
+        padding: {
+          left: 75,
+          right: 75,
+          top: 20,
+          bottom: 20
+        }
+      },
       scales: {
         r: {
           grid: { color: gridColor },
