@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VNU Digital Portfolio - Cute Pet Journey 🐾</title>
+
+  <!-- Meta SEO -->
+  <meta name="description"
+    content="Portfolio học thuật của Nguyễn Thị Anh Thư ĐHQGHN cho môn học Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo. Trình bày 6 bài tập lớn chi tiết.">
+  <meta name="keywords"
+    content="VNU, ĐHQGHN, AI, Công nghệ số, Portfolio, Trí tuệ nhân tạo, Học thuật, Prompt Engineering">
+  <meta name="author" content="Nguyen Thi Anh Thu">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="VNU Digital Portfolio - Cute Pet Journey 🐾">
+  <meta property="og:description"
+    content="Khám phá hành trình học tập và 6 bài tập lớn cùng bộ nguyên tắc AI có trách nhiệm dưới thiết kế thú cưng màu hồng cực xinh xắn!">
+  <meta property="og:image" content="img/avt.jpg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Quicksand', 'sans-serif'],
+            display: ['Fredoka', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Stylesheets & Icon libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body
+  class="bg-[#fff5f6] text-[#4d122b] font-sans antialiased selection:bg-pink-300 selection:text-pink-900 transition-colors duration-300">
+
+
+  <!-- Skeleton Loading Screen -->
+  <div id="loader-wrapper" class="bg-[#fff5f6] fixed inset-0 z-[99999] flex flex-col p-6 overflow-hidden">
+    <!-- Skeleton Navbar -->
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between h-20 mb-12 animate-pulse">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-pink-200 rounded-2xl"></div>
+        <div class="space-y-1.5">
+          <div class="h-4 w-32 bg-pink-200 rounded-full"></div>
+          <div class="h-2 w-20 bg-pink-200 rounded-full"></div>
+        </div>
+      </div>
+      <div class="hidden md:flex gap-6">
+        <div class="h-4 w-16 bg-pink-200 rounded-full"></div>
+        <div class="h-4 w-16 bg-pink-200 rounded-full"></div>
+        <div class="h-4 w-16 bg-pink-200 rounded-full"></div>
+        <div class="h-4 w-16 bg-pink-200 rounded-full"></div>
+      </div>
+    </div>
+    <!-- Skeleton Hero -->
+    <div
+      class="max-w-4xl mx-auto w-full flex flex-col items-center text-center space-y-6 flex-1 justify-center animate-pulse">
+      <div class="h-8 w-48 bg-pink-200 rounded-full"></div>
+      <div class="h-16 w-3/4 bg-pink-200 rounded-3xl"></div>
+      <div class="space-y-2 w-2/3">
+        <div class="h-4 w-full bg-pink-100 rounded-full"></div>
+        <div class="h-4 w-5/6 bg-pink-100 rounded-full mx-auto"></div>
+        <div class="h-4 w-4/5 bg-pink-100 rounded-full mx-auto"></div>
+      </div>
+      <div class="flex gap-4 w-full justify-center pt-4">
+        <div class="h-12 w-40 bg-pink-200 rounded-2xl"></div>
+        <div class="h-12 w-40 bg-pink-200 rounded-2xl"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wavy Bubble Background Shapes -->
+  <div class="cyber-bg">
+    <div class="grid-overlay"></div>
+    <canvas id="canvas-net"></canvas>
+  </div>
+
+  <!-- Floating Controls -->
+  <div class="fixed bottom-6 right-6 z-[999] flex flex-col gap-3">
+    <!-- Back To Top Button -->
+    <a href="#" id="back-to-top"
+      class="floating-control-btn glass-panel text-pink-600 bg-white hover:bg-pink-50 border-2 border-pink-200 justify-center items-center hidden self-end">
+      <i class="fas fa-arrow-up"></i>
+    </a>
+  </div>
+
+  <!-- --- HEADER / NAVBAR --- -->
+  <header class="glass-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo VNU Pet style -->
+        <div class="flex items-center gap-2">
+          <div
+            class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 flex items-center justify-center text-white font-display font-extrabold text-xl shadow-md shadow-pink-300">
+            🐾
+          </div>
+          <div>
+            <span class="font-display font-bold text-base tracking-wider text-pink-600 block leading-tight">ANH THƯ
+              PORTFOLIO</span>
+            <span class="text-[9px] text-[#8c3a5c] uppercase tracking-widest block font-bold mt-0.5">Nhập môn Công nghệ số &
+              AI</span>
+          </div>
+        </div>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-6 font-bold text-xs uppercase tracking-wider">
+          <a href="#home" class="nav-link text-slate-800 hover:text-pink-600 transition active">Trang chủ</a>
+          <a href="#about" class="nav-link text-slate-800 hover:text-pink-600 transition">Hồ sơ</a>
+          <a href="#projects" class="nav-link text-slate-800 hover:text-pink-600 transition">Bài tập lớn</a>
+          <a href="#reflection" class="nav-link text-slate-800 hover:text-pink-600 transition">Cảm nhận</a>
+        </nav>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-toggle" class="text-pink-600 p-2 rounded-xl glass-panel">
+            <i class="fas fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu"
+      class="hidden md:hidden bg-[#fff5f6]/95 border-b border-pink-200 backdrop-blur-xl px-4 pt-2 pb-6 flex flex-col gap-4 text-xs font-bold uppercase tracking-wider">
+      <a href="#home" class="mobile-nav-link text-slate-800 py-2 border-b border-pink-100">Trang chủ</a>
+      <a href="#about" class="mobile-nav-link text-slate-800 py-2 border-b border-pink-100">Hồ sơ Pet</a>
+      <a href="#projects" class="mobile-nav-link text-slate-800 py-2 border-b border-pink-100">Bài tập lớn</a>
+      <a href="#reflection" class="mobile-nav-link text-slate-800 py-2">Cảm nhận</a>
+    </div>
+  </header>
+
+  <!-- --- HERO SECTION --- -->
+  <section id="home" class="hero-section">
+    <!-- Glowing background orbs -->
+    <div class="glow-orb"></div>
+    <div class="glow-orb-secondary"></div>
+
+    <div class="max-w-4xl mx-auto px-4 text-center z-10">
+      <!-- Course Badge -->
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 border-2 border-pink-300 text-xs font-bold text-pink-600 mb-8 uppercase tracking-widest"
+        data-aos="fade-down">
+        🐾 ĐẠI HỌC QUỐC GIA HÀ NỘI 🐾
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="font-display font-extrabold text-4xl sm:text-6xl tracking-tight leading-tight mb-8 text-[#4d122b]"
+        data-aos="fade-up">
+        Hành trình Học tập số &<br>
+        <span class="text-gradient">Ứng dụng AI</span>
+      </h1>
+
+      <!-- Bio / Description -->
+      <p class="max-w-2xl mx-auto text-slate-800 text-base sm:text-lg mb-10 leading-relaxed font-semibold"
+        data-aos="fade-up" data-aos-delay="100">
+        Nơi thu thập kiến thức công nghệ, rèn luyện kỹ luật AI có trách nhiệm và tổng hợp chuỗi 6 bài tập nghiên cứu
+        thuộc môn học
+        <span class="text-pink-600">"Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo"</span>.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center" data-aos="fade-up" data-aos-delay="200">
+        <a href="#projects"
+          class="px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-bold rounded-2xl transition shadow-md shadow-pink-300 w-full sm:w-auto text-center">
+          🐾 Đọc 6 bài tập dự án
+        </a>
+        <a href="#about"
+          class="px-8 py-4 bg-white hover:bg-pink-50 text-pink-600 border-2 border-pink-200 rounded-2xl transition w-full sm:w-auto text-center glass-panel">
+          🐱 Xem hồ sơ sinh viên
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- ABOUT SECTION / PET PASSPORT --- -->
+  <section id="about" class="py-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Title -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="font-display font-bold text-3xl text-pink-600 mb-4">Hồ sơ 📖</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-rose-400 mx-auto rounded-full"></div>
+      </div>
+
+      <!-- Passport Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+        <!-- Passport Left Column - Photo & Info Card -->
+        <div class="lg:col-span-7 glass-panel passport-card p-6 sm:p-8" data-aos="fade-right">
+          <!-- Passport Stamp -->
+          <div class="passport-stamp">APPROVED</div>
+
+          <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start relative z-10">
+            <!-- Student Avatar -->
+            <div class="relative group">
+              <div
+                class="absolute -inset-1.5 bg-gradient-to-tr from-pink-500 to-yellow-400 rounded-3xl blur opacity-30 group-hover:opacity-60 transition duration-500">
+              </div>
+              <img src="img/avt.jpg" alt="Student Avatar"
+                class="relative w-36 h-36 rounded-3xl object-cover border-4 border-white shadow-md">
+            </div>
+
+            <!-- Student Info Fields -->
+            <div class="flex-1 space-y-4">
+              <div>
+                <span class="text-xs text-pink-600 uppercase tracking-widest font-bold">Họ và Tên / Pet Owner</span>
+                <h3 class="font-display font-bold text-2xl text-pink-600 mt-1">Nguyễn Thị Anh Thư</h3>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <span class="text-xs text-pink-600 uppercase tracking-widest font-bold">Học viện /
+                    University</span>
+                  <p class="text-base font-bold mt-0.5">Trường ĐH Ngoại ngữ - ĐHQGHN</p>
+                </div>
+                <div>
+                  <span class="text-xs text-pink-600 uppercase tracking-widest font-bold">Chuyên ngành /
+                    Major</span>
+                  <p class="text-base font-bold mt-0.5">Ngôn ngữ Trung</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t-2 border-dashed border-pink-200 mt-8 pt-6 relative z-10 space-y-4 text-sm">
+            <div>
+              <span class="text-xs text-pink-500 uppercase tracking-widest font-bold block mb-1">Mục tiêu học
+                tập</span>
+              <p class="font-semibold text-slate-800 text-base">
+                Thành thạo phương pháp gõ phím, cấu trúc tệp tin tối ưu và prompt engineering khoa học để khai thác AI
+                hiệu quả nhất trong học tập và công tác chuyên môn ngành Ngôn ngữ Trung trong tương lai.
+              </p>
+            </div>
+            <div>
+              <span class="text-xs text-pink-500 uppercase tracking-widest font-bold block mb-1">Định hướng phát
+                triển</span>
+              <p class="font-semibold text-slate-800 text-base">
+                Trở thành biên - phiên dịch viên kiêm chuyên gia nghiên cứu ngôn ngữ có năng lực công nghệ cao, ứng dụng
+                trí tuệ nhân tạo có trách nhiệm để nâng cao hiệu suất biên dịch và số hóa học thuật Hán ngữ.
+              </p>
+            </div>
+            <div>
+              <span class="text-xs text-pink-500 uppercase tracking-widest font-bold block mb-1">Mục tiêu
+                Portfolio</span>
+              <p class="font-semibold text-slate-800 text-base">
+                Lưu trữ chặng đường học tập nghiêm túc, minh bạch quá trình làm bài và cung cấp minh chứng học thuật
+                chất lượng cao từ các tệp PDF môn học.
+              </p>
+            </div>
+          </div>
+
+          <!-- Inspirational Quote -->
+          <div class="mt-8 p-4 bg-pink-100/50 border-2 border-pink-200 rounded-2xl relative z-10">
+            <span class="text-xs text-pink-600 uppercase tracking-widest font-bold block mb-1">🌸 Châm ngôn học
+              tập</span>
+            <p class="italic text-xs font-semibold text-slate-800 text-base">
+              "Kiến thức công nghệ giống như những dấu chân nhỏ trên con đường dài, mỗi bước đi cẩn trọng và sáng tạo sẽ
+              đưa ta tới đỉnh cao tri thức."
+            </p>
+          </div>
+        </div>
+
+        <!-- Passport Right Column - Skills & Badges -->
+        <div class="lg:col-span-5 space-y-8">
+
+          <!-- Skill Radar Canvas -->
+          <div class="glass-panel p-6" data-aos="fade-left">
+            <span class="text-xs text-pink-600 uppercase tracking-widest font-bold block mb-4">Sơ đồ năng lực thú
+              cưng</span>
+            <div class="radar-container relative h-[250px]">
+              <canvas id="skillRadar"></canvas>
+            </div>
+          </div>
+
+          <!-- Achievement Badges Card -->
+          <div class="glass-panel p-6" data-aos="fade-left" data-aos-delay="100">
+            <span class="text-xs text-pink-600 uppercase tracking-widest font-bold block mb-4">Huy chương đạt
+              được</span>
+            <div class="grid grid-cols-3 gap-3 text-center">
+
+              <div
+                class="badge-card p-3 bg-pink-100 hover:bg-pink-200 border-2 border-pink-200 rounded-2xl flex flex-col items-center justify-center">
+                <span class="text-2xl mb-1">🛡️</span>
+                <span class="text-xs font-bold text-[#4d122b] block">Dấu chân Liêm chính</span>
+                <span class="text-[8px] text-pink-500 block mt-0.5">APA & Policy</span>
+              </div>
+
+              <div
+                class="badge-card p-3 bg-pink-100 hover:bg-pink-200 border-2 border-pink-200 rounded-2xl flex flex-col items-center justify-center">
+                <span class="text-2xl mb-1">🍪</span>
+                <span class="text-xs font-bold text-[#4d122b] block">Bánh Quy Prompter</span>
+                <span class="text-[8px] text-pink-500 block mt-0.5">Prompt 5 yếu tố</span>
+              </div>
+
+              <div
+                class="badge-card p-3 bg-pink-100 hover:bg-pink-200 border-2 border-pink-200 rounded-2xl flex flex-col items-center justify-center">
+                <span class="text-2xl mb-1">🐾</span>
+                <span class="text-xs font-bold text-[#4d122b] block">Dự án Xương Vàng</span>
+                <span class="text-[8px] text-pink-500 block mt-0.5">Trello & Collab</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- --- PROJECTS SECTION --- -->
+  <section id="projects" class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Title -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="font-display font-bold text-3xl text-pink-600 mb-4">Các bài tập dự án 🐾</h2>
+        <p class="text-slate-800 max-w-xl mx-auto text-sm font-semibold">Bấm vào các tab để xem quy trình thực hiện và
+          tóm tắt chi tiết của từng bài tập nhé!</p>
+        <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-rose-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Projects Deck -->
+      <div class="space-y-16">
+
+        <!-- PROJECT 1 CARD -->
+        <div id="project-1" class="glass-panel project-card p-6 sm:p-8" data-aos="fade-up">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-pink-100 pb-6 mb-6">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-2xl bg-pink-100 border-2 border-pink-200 flex items-center justify-center text-pink-500 text-lg">
+                🐾
+              </div>
+              <div>
+                <span class="text-xs text-pink-500 uppercase tracking-widest font-bold">Bài tập 1 / Exercise 1</span>
+                <h3 class="font-display font-bold text-lg text-[#4d122b] mt-0.5">Thao tác cơ bản với tệp tin và thư mục
+                </h3>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-xs text-pink-600 block uppercase font-bold">Trạng thái</span>
+                <span class="text-xs font-bold text-emerald-500 block">Hoàn thành 100% 🍪</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Tabs -->
+          <div class="flex gap-2 border-b border-pink-100 pb-4 mb-6 overflow-x-auto">
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800 active"
+              data-tab="overview">Tổng quan</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="workflow">Quy trình</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="summary">Tóm tắt học thuật</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="preview">File PDF</button>
+          </div>
+
+          <!-- Tab Content Container -->
+          <div class="space-y-6">
+            <!-- TAB: OVERVIEW -->
+            <div id="project-1-overview" class="tab-content active space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Mục tiêu bài tập</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Làm quen và thực hành sử dụng File Explorer của hệ điều hành Windows để xây dựng cấu trúc quản lý
+                    tệp tin và thư mục tối ưu, bảo vệ tài nguyên học tập khoa học.
+                  </p>
+                </div>
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Từ khóa kỹ năng</h5>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">File
+                      Explorer 📂</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Phím
+                      tắt (Ctrl+C/V/X) ⌨</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Shift
+                      + Delete 🧹</span>
+                    <span
+                      class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Recycle
+                      Bin Restore 🔄</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: WORKFLOW -->
+            <div id="project-1-workflow" class="tab-content space-y-4">
+              <div class="border-l-4 border-pink-400 pl-4 space-y-3 text-sm text-slate-800 font-semibold">
+                <div>🐾 <strong>Bước 1:</strong> Mở File Explorer bằng tổ hợp phím <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">Windows + E</code>, vào ổ đĩa không phải hệ
+                  thống hoặc Documents.</div>
+                <div>🐾 <strong>Bước 2:</strong> Nhấp chuột phải tạo thư mục gốc đặt tên không dấu: <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">ThucHanh_DangAnhThu</code>.</div>
+                <div>🐾 <strong>Bước 3:</strong> Tạo tệp văn bản <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">GhiChu.txt</code> rồi thực hiện đổi tên thành
+                  <code class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">GhiChuQuanTrong.txt</code>.
+                </div>
+                <div>🐾 <strong>Bước 4:</strong> Tạo thư mục con <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">TaiLieu</code>, copy tệp chú thích vào thư mục
+                  con này.</div>
+                <div>🐾 <strong>Bước 5:</strong> Tạo tệp <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">DiChuyen.txt</code> và cắt dán (cut) để di
+                  chuyển tệp vào <code class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">TaiLieu</code>.</div>
+                <div>🐾 <strong>Bước 6:</strong> Xóa tệp chú thích trong <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">TaiLieu</code> để đưa vào Thùng rác. Thử xóa
+                  vĩnh viễn tệp di chuyển bằng <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">Shift+Delete</code>, sau đó phục hồi tệp chú
+                  thích từ Recycle Bin.</div>
+              </div>
+            </div>
+
+            <!-- TAB: SUMMARY -->
+            <div id="project-1-summary" class="tab-content space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Tóm tắt học thuật & Điểm nổi bật
+                  </h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Học tập nguyên tắc quản lý tệp giúp giảm thiểu nguy cơ thất lạc thông tin học tập lên đến 40%. Sự
+                    nhất quán trong quy cách đặt tên không dấu, không khoảng trắng, phân tách bằng dấu gạch dưới giúp
+                    các tệp hoạt động ổn định giữa hệ điều hành Windows và các nền tảng đám mây chia sẻ nhóm.
+                  </p>
+                </div>
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Khó khăn & Cách giải quyết</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    <strong>Khó khăn:</strong> Nguy cơ ấn nhầm phím xóa vĩnh viễn làm mất tệp tin quan trọng.<br>
+                    <strong>Khắc phục:</strong> Cẩn thận đọc hộp thoại cảnh báo khi nhấn Shift + Delete, thiết lập chế
+                    độ hiển thị xác nhận xóa trong File Explorer.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: PREVIEW -->
+            <div id="project-1-preview" class="tab-content space-y-4">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-pink-100/50 border-2 border-pink-100 rounded-2xl">
+                <div class="text-sm">
+                  <span class="text-pink-600 block font-semibold">Tệp đính kèm:</span>
+                  <span class="text-pink-700 font-bold block"><i class="far fa-file-pdf text-red-500 mr-1"></i>
+                    bai1.pdf</span>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                  <button data-pdf="baitap/bai1.pdf"
+                    class="pdf-trigger px-5 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center shadow-sm">
+                    🔍 Xem trước PDF
+                  </button>
+                  <a href="baitap/bai1.pdf" download
+                    class="px-5 py-2.5 bg-white hover:bg-pink-50 text-pink-600 border-2 border-pink-200 font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center">
+                    📥 Tải PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 2 CARD -->
+        <div id="project-2" class="glass-panel project-card p-6 sm:p-8" data-aos="fade-up">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-pink-100 pb-6 mb-6">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-2xl bg-pink-100 border-2 border-pink-200 flex items-center justify-center text-pink-500 text-lg">
+                🐾
+              </div>
+              <div>
+                <span class="text-xs text-pink-500 uppercase tracking-widest font-bold">Bài tập 2 / Exercise 2</span>
+                <h3 class="font-display font-bold text-lg text-[#4d122b] mt-0.5">Tìm kiếm và đánh giá thông tin học
+                  thuật</h3>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-xs text-pink-600 block uppercase font-bold">Trạng thái</span>
+                <span class="text-xs font-bold text-emerald-500 block">Hoàn thành 100% 🍪</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Tabs -->
+          <div class="flex gap-2 border-b border-pink-100 pb-4 mb-6 overflow-x-auto">
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800 active"
+              data-tab="overview">Tổng quan</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="workflow">Quy trình</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="summary">Tóm tắt học thuật</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="preview">File PDF</button>
+          </div>
+
+          <!-- Tab Content Container -->
+          <div class="space-y-6">
+            <!-- TAB: OVERVIEW -->
+            <div id="project-2-overview" class="tab-content active space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Mục tiêu bài tập</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Khai thác dữ liệu Google Scholar qua hệ toán tử chuyên sâu để viết báo cáo "Toàn cảnh ngành Ngôn ngữ
+                    Trung Quốc tại Việt Nam 2026", thiết lập bảng đánh giá độ tin cậy của 11 tài liệu tham khảo theo
+                    chuẩn Harvard.
+                  </p>
+                </div>
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Từ khóa kỹ năng</h5>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Toán
+                      tử Google Scholar 🔍</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Chuẩn
+                      Harvard Referencing 📚</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Đánh
+                      giá 5 tiêu chí tin cậy 🛡</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: WORKFLOW -->
+            <div id="project-2-workflow" class="tab-content space-y-4">
+              <div class="border-l-4 border-pink-400 pl-4 space-y-3 text-sm text-slate-800 font-semibold">
+                <div>🐾 <strong>Bước 1:</strong> Đặt câu hỏi nghiên cứu về nhu cầu tuyển dụng và rào cản ngữ pháp tiếng
+                  Trung của sinh viên Việt Nam.</div>
+                <div>🐾 <strong>Bước 2:</strong> Thiết lập các câu truy vấn Google Scholar nâng cao: <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">author:"Lưu Hớn Vũ" "ngôn ngữ Trung Quốc"</code>,
+                  <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">filetype:pdf "sư phạm tiếng Trung" site:edu.vn</code>.
+                </div>
+                <div>🐾 <strong>Bước 3:</strong> Lọc ra 11 tài liệu khoa học phù hợp nhất (gồm sách Cambridge Scholars,
+                  bài báo của Tạp chí Ngôn ngữ và Đời sống, Tạp chí KH ĐH Sư phạm TP.HCM, và báo cáo VietnamWorks).
+                </div>
+                <div>🐾 <strong>Bước 4:</strong> Thiết lập bảng phân tích 11 nguồn về: Tác giả/Tên nguồn, Cơ quan xuất
+                  bản, Phương pháp nghiên cứu, Tính cập nhật (Ví dụ: Cafebiz 2026 rất cập nhật nhưng độ tin cậy trung
+                  bình; tạp chí khoa học chuyên sâu cập nhật trung bình nhưng độ tin cậy rất cao).</div>
+                <div>🐾 <strong>Bước 5:</strong> Soạn thảo danh mục tài liệu tham khảo theo định dạng chuẩn Harvard và
+                  hoàn tất báo cáo.</div>
+              </div>
+            </div>
+
+            <!-- TAB: SUMMARY -->
+            <div id="project-2-summary" class="tab-content space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Tóm tắt học thuật & Điểm nổi bật
+                  </h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Báo cáo chứng minh thực trạng: Nhu cầu nhân lực song ngữ Anh-Trung tăng 60% trong 3 năm qua. Mặc dù
+                    điểm chuẩn hệ Sư phạm tiếng Trung tại ULIS đã chạm mức tuyệt đối 30/30 và tỷ lệ có việc làm khi ra
+                    trường của ULIS đạt 98.8%, FTU 100%, nhưng thị trường vẫn cực kỳ khan hiếm nhân lực chất lượng cao
+                    am hiểu chuyên ngành sâu như E-commerce, Logistics, và Marketing.
+                  </p>
+                </div>
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Khó khăn & Cách giải quyết</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    <strong>Khó khăn:</strong> Google Scholar trả về rất nhiều kết quả rác hoặc sách báo bị khóa quyền
+                    đọc.<br>
+                    <strong>Khắc phục:</strong> Sử dụng toán tử loại trừ dấu trừ <code
+                      class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">-</code> để lọc bỏ các chủ đề không mong
+                    muốn và sử dụng thư viện điện tử ĐHQGHN để truy cập các bài báo khoa học đầy đủ.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: PREVIEW -->
+            <div id="project-2-preview" class="tab-content space-y-4">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-pink-100/50 border-2 border-pink-100 rounded-2xl">
+                <div class="text-sm">
+                  <span class="text-pink-600 block font-semibold">Tệp đính kèm:</span>
+                  <span class="text-pink-700 font-bold block"><i class="far fa-file-pdf text-red-500 mr-1"></i>
+                    bai2.pdf</span>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                  <button data-pdf="baitap/bai2.pdf"
+                    class="pdf-trigger px-5 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center shadow-sm">
+                    🔍 Xem trước PDF
+                  </button>
+                  <a href="baitap/bai2.pdf" download
+                    class="px-5 py-2.5 bg-white hover:bg-pink-50 text-pink-600 border-2 border-pink-200 font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center">
+                    📥 Tải PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 3 CARD -->
+        <div id="project-3" class="glass-panel project-card p-6 sm:p-8" data-aos="fade-up">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-pink-100 pb-6 mb-6">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-2xl bg-pink-100 border-2 border-pink-200 flex items-center justify-center text-pink-500 text-lg">
+                🐾
+              </div>
+              <div>
+                <span class="text-xs text-pink-500 uppercase tracking-widest font-bold">Bài tập 3 / Exercise 3</span>
+                <h3 class="font-display font-bold text-lg text-[#4d122b] mt-0.5">Prompt Engineering học tập hiệu quả
+                </h3>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-xs text-pink-600 block uppercase font-bold">Trạng thái</span>
+                <span class="text-xs font-bold text-emerald-500 block">Hoàn thành 100% 🍪</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Tabs -->
+          <div class="flex gap-2 border-b border-pink-100 pb-4 mb-6 overflow-x-auto">
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800 active"
+              data-tab="overview">Tổng quan</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="workflow">Quy trình</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="summary">Tóm tắt học thuật</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="preview">File PDF</button>
+          </div>
+
+          <!-- Tab Content Container -->
+          <div class="space-y-6">
+            <!-- TAB: OVERVIEW -->
+            <div id="project-3-overview" class="tab-content active space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Mục tiêu bài tập</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Thiết kế và thử nghiệm so sánh 3 cấp độ Prompt (Cơ bản, Cải tiến, Nâng cao) đối với 3 tác vụ học tập
+                    cụ thể: tóm tắt Georgia O'Keeffe, giải thích Chuyển đổi số và soạn câu hỏi luyện nói tiếng Trung.
+                  </p>
+                </div>
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Từ khóa kỹ năng</h5>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Thiết
+                      lập Vai trò (Persona) 🎭</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Cấu
+                      trúc 5 Yếu tố 🍪</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">So
+                      sánh kết quả đầu ra AI ⚖</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: WORKFLOW -->
+            <div id="project-3-workflow" class="tab-content space-y-4">
+              <div class="border-l-4 border-pink-400 pl-4 space-y-3 text-sm text-slate-800 font-semibold">
+                <div>🐾 <strong>Tác vụ 1:</strong> So sánh prompt tóm tắt bài đọc. Cơ bản ("Tóm tắt bài viết") vs Cải
+                  tiến (200 từ, nêu chủ đề, luận điểm) vs Nâng cao (Đóng vai giảng viên đại học, phân tích chủ đề, mục
+                  tiêu, 3 luận điểm, phương pháp, kết luận và ý nghĩa thực tiễn, giới hạn 200-250 từ).</div>
+                <div>🐾 <strong>Tác vụ 2:</strong> So sánh prompt giải thích Chuyển đổi số. Cơ bản vs Cải tiến (Nêu định
+                  nghĩa, cách hoạt động, 3 ví dụ) vs Nâng cao (Đóng vai giáo viên lớp 10, chỉ ra định nghĩa, 3 ví dụ,
+                  lợi ích, hạn chế, 1 câu hỏi ôn tập, tránh thuật ngữ phức tạp).</div>
+                <div>🐾 <strong>Tác vụ 3:</strong> So sánh prompt tạo câu hỏi luyện nói tiếng Trung về chủ đề "Tương lai
+                  của tôi". Cơ bản vs Cải tiến (15 câu hỏi) vs Nâng cao (Đóng vai giáo viên HSK 4, tạo 10 câu cơ bản, 5
+                  câu hỏi mở, 5 câu nâng cao kèm pinyin, nghĩa tiếng Việt, gợi ý từ vựng HSK 4).</div>
+              </div>
+            </div>
+
+            <!-- TAB: SUMMARY -->
+            <div id="project-3-summary" class="tab-content space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Tóm tắt học thuật & Điểm nổi bật
+                  </h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Thực nghiệm chứng minh prompt nâng cao cho kết quả tối ưu nhất. Lý do là vì prompt nâng cao quy định
+                    rõ vai trò AI (giúp chọn từ vựng phù hợp bối cảnh), định rõ cấu trúc đầu ra logic, giới hạn số lượng
+                    nội dung cụ thể, xác định đúng đối tượng người nghe và quy định phong cách diễn đạt rõ ràng.
+                  </p>
+                </div>
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Khó khăn & Cách giải quyết</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    <strong>Khó khăn:</strong> AI thỉnh thoảng bỏ qua một vài ràng buộc phụ như số từ giới hạn hoặc cấu
+                    trúc pinyin.<br>
+                    <strong>Khắc phục:</strong> Sử dụng Markdown để viết prompt có tiêu đề rành mạch, đưa các ràng buộc
+                    quan trọng nhất lên đầu và nhắc lại ở cuối prompt.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: PREVIEW -->
+            <div id="project-3-preview" class="tab-content space-y-4">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-pink-100/50 border-2 border-pink-100 rounded-2xl">
+                <div class="text-sm">
+                  <span class="text-pink-600 block font-semibold">Tệp đính kèm:</span>
+                  <span class="text-pink-700 font-bold block"><i class="far fa-file-pdf text-red-500 mr-1"></i>
+                    bai3.pdf</span>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                  <button data-pdf="baitap/bai3.pdf"
+                    class="pdf-trigger px-5 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center shadow-sm">
+                    🔍 Xem trước PDF
+                  </button>
+                  <a href="baitap/bai3.pdf" download
+                    class="px-5 py-2.5 bg-white hover:bg-pink-50 text-pink-600 border-2 border-pink-200 font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center">
+                    📥 Tải PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 4 CARD -->
+        <div id="project-4" class="glass-panel project-card p-6 sm:p-8" data-aos="fade-up">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-pink-100 pb-6 mb-6">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-2xl bg-pink-100 border-2 border-pink-200 flex items-center justify-center text-pink-500 text-lg">
+                🐾
+              </div>
+              <div>
+                <span class="text-xs text-pink-500 uppercase tracking-widest font-bold">Bài tập 4 / Exercise 4</span>
+                <h3 class="font-display font-bold text-lg text-[#4d122b] mt-0.5">Sử dụng công cụ hợp tác trực tuyến cho
+                  dự án nhóm</h3>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-xs text-pink-600 block uppercase font-bold">Trạng thái</span>
+                <span class="text-xs font-bold text-emerald-500 block">Hoàn thành 100% 🍪</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Tabs -->
+          <div class="flex gap-2 border-b border-pink-100 text-slate-800 pb-4 mb-6 overflow-x-auto">
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800 active"
+              data-tab="overview">Tổng quan</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="workflow">Quy trình</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="summary">Tóm tắt học thuật</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="preview">File PDF</button>
+          </div>
+
+          <!-- Tab Content Container -->
+          <div class="space-y-6">
+            <!-- TAB: OVERVIEW -->
+            <div id="project-4-overview" class="tab-content active space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Mục tiêu bài tập</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Trải nghiệm thiết lập môi trường đám mây làm việc nhóm phi tập trung. Phối hợp viết bài tiểu luận
+                    chủ đề "Quyền tác giả trong học tập và sáng tạo nội dung" của Nhóm 11.
+                  </p>
+                </div>
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Từ khóa kỹ năng</h5>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Trello
+                      Kanban Board 📊</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Google
+                      Docs Co-editing 📄</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Google
+                      Drive Storage 📂</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: WORKFLOW -->
+            <div id="project-4-workflow" class="tab-content space-y-4">
+              <div class="border-l-4 border-pink-400 pl-4 space-y-3 text-sm text-slate-800 font-semibold">
+                <div>🐾 <strong>Ngày 1:</strong> Họp Zoom thống nhất chủ đề, trưởng nhóm Hoàng Mai Ly khởi tạo bảng
+                  Trello, thư mục nhóm Google Drive và file Google Docs chung, phân chia công việc.</div>
+                <div>🐾 <strong>Ngày 2-3:</strong> Các thành viên soạn thảo trực tiếp phần nội dung được phân công trên
+                  file Google Docs chung (đạt 70-80% tiến độ).</div>
+                <div>🐾 <strong>Ngày 4:</strong> Thành viên tìm tài liệu, văn bản pháp luật lưu vào thư mục "Tài liệu
+                  tham khảo" của nhóm trên Drive, đặt tên dạng <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">TênThànhViên_PhầnĐượcGiao</code>.</div>
+                <div>🐾 <strong>Ngày 5:</strong> Cả nhóm rà soát lỗi chính tả, sử dụng tính năng nhận xét (Comment) trên
+                  Docs để thảo luận và chỉnh sửa đồng bộ nội dung.</div>
+                <div>🐾 <strong>Ngày 6:</strong> Trưởng nhóm tổng hợp tiểu luận, chụp ảnh minh chứng hoạt động của các
+                  công cụ và hoàn tất dự án.</div>
+              </div>
+            </div>
+
+            <!-- TAB: SUMMARY -->
+            <div id="project-4-summary" class="tab-content space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Tóm tắt học thuật & Điểm nổi bật
+                  </h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Sử dụng các công cụ đám mây giúp trực quan hóa tiến độ công việc, tăng 50% tính minh bạch và tránh
+                    thất lạc thông tin. Thành viên nhóm tự giác quản lý thẻ nhiệm vụ trên Trello (Việc cần làm - Đang
+                    làm - Xong) giúp nâng cao tinh thần phối hợp.
+                  </p>
+                </div>
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Khó khăn & Cách giải quyết</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    <strong>Khó khăn:</strong> Trùng lặp nội dung và lỗi định dạng font chữ khác biệt giữa các thành
+                    viên.<br>
+                    <strong>Khắc phục:</strong> Thống nhất quy ước font chữ, cỡ chữ, căn lề trước khi tổng hợp và sử
+                    dụng tính năng gợi ý thay đổi của Google Docs.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: PREVIEW -->
+            <div id="project-4-preview" class="tab-content space-y-4">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-pink-100/50 border-2 border-pink-100 rounded-2xl">
+                <div class="text-sm">
+                  <span class="text-pink-600 block font-semibold">Tệp đính kèm:</span>
+                  <span class="text-pink-700 font-bold block"><i class="far fa-file-pdf text-red-500 mr-1"></i>
+                    bai4.pdf</span>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                  <button data-pdf="baitap/bai4.pdf"
+                    class="pdf-trigger px-5 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center shadow-sm">
+                    🔍 Xem trước PDF
+                  </button>
+                  <a href="baitap/bai4.pdf" download
+                    class="px-5 py-2.5 bg-white hover:bg-pink-50 text-pink-600 border-2 border-pink-200 font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center">
+                    📥 Tải PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 5 CARD -->
+        <div id="project-5" class="glass-panel project-card p-6 sm:p-8" data-aos="fade-up">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-pink-100 pb-6 mb-6">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-2xl bg-pink-100 border-2 border-pink-200 flex items-center justify-center text-pink-500 text-lg">
+                🐾
+              </div>
+              <div>
+                <span class="text-xs text-pink-500 uppercase tracking-widest font-bold">Bài tập 5 / Exercise 5</span>
+                <h3 class="font-display font-bold text-lg text-[#4d122b] mt-0.5">Sử dụng AI tạo sinh để hỗ trợ sáng tạo
+                  nội dung số</h3>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-xs text-pink-600 block uppercase font-bold">Trạng thái</span>
+                <span class="text-xs font-bold text-emerald-500 block">Hoàn thành 100% 🍪</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Tabs -->
+          <div class="flex gap-2 border-b border-pink-100 text-slate-800 pb-4 mb-6 overflow-x-auto">
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800 active"
+              data-tab="overview">Tổng quan</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="workflow">Quy trình</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="summary">Tóm tắt học thuật</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="preview">File PDF</button>
+          </div>
+
+          <!-- Tab Content Container -->
+          <div class="space-y-6">
+            <!-- TAB: OVERVIEW -->
+            <div id="project-5-overview" class="tab-content active space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Mục tiêu bài tập</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Ứng dụng quy trình làm việc đa mô hình AI (Multi-model workflow) kết hợp ChatGPT, DALL-E 3 và Canva
+                    AI thiết kế bài đăng blog truyền thông và bộ infographic về "Ảnh hưởng tiêu cực của mạng xã hội đối
+                    với sinh viên nữ".
+                  </p>
+                </div>
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Từ khóa kỹ năng</h5>
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">ChatGPT
+                      Text-Generation 💬</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">DALL-E
+                      3 Image-Gen 🎨</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Canva
+                      AI Layout Edit 🖼</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: WORKFLOW -->
+            <div id="project-5-workflow" class="tab-content space-y-4">
+              <div class="border-l-4 border-pink-400 pl-4 space-y-3 text-sm text-slate-800 font-semibold">
+                <div>🐾 <strong>Bước 1:</strong> Sử dụng ChatGPT phác thảo nội dung bài viết blog qua prompt: <code
+                    class="bg-pink-100 px-1 py-0.5 rounded text-pink-600">"Write a clear, friendly, well-structured blog post..."</code>.
+                </div>
+                <div>🐾 <strong>Bước 2:</strong> Sửa đổi bài viết thủ công để phù hợp ngôn từ sinh viên, bổ sung giải
+                  pháp thực tế.</div>
+                <div>🐾 <strong>Bước 3:</strong> Ra lệnh cho DALL-E 3 thiết kế các hình ảnh đồ họa phẳng (flat icons) mô
+                  tả các khía cạnh áp lực ngoại hình, xao nhãng học tập, lừa đảo... theo tông màu pastel dễ thương.
+                </div>
+                <div>🐾 <strong>Bước 4:</strong> Tải các biểu tượng của DALL-E 3 lên Canva, dùng Canva AI căn chỉnh bố
+                  cục, chèn chữ tiếng Việt chuẩn xác và hoàn thành Infographic.</div>
+              </div>
+            </div>
+
+            <!-- TAB: SUMMARY -->
+            <div id="project-5-summary" class="tab-content space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Tóm tắt học thuật & Điểm nổi bật
+                  </h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Sự kết hợp đa mô hình mang lại hiệu suất tối đa: ChatGPT hỗ trợ lên dàn ý nhanh chóng, DALL-E 3 minh
+                    họa hóa ý tưởng phi ngôn ngữ độc đáo và Canva AI giữ vai trò hoàn thiện bố cục thẩm mỹ. Bài blog nêu
+                    bật 5 ảnh hưởng tiêu cực của mạng xã hội giúp sinh viên nữ tự nhận thức và bảo vệ sức khỏe tâm lý
+                    số.
+                  </p>
+                </div>
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Khó khăn & Cách giải quyết</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    <strong>Khó khăn:</strong> AI vẽ chữ tiếng Việt bị sai chính tả và biến dạng nghiêm trọng.<br>
+                    <strong>Khắc phục:</strong> Tạo ảnh trống không chữ bằng DALL-E 3, sau đó dùng tính năng gõ văn bản
+                    của Canva để đè chữ tiếng Việt lên.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: PREVIEW -->
+            <div id="project-5-preview" class="tab-content space-y-4">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-pink-100/50 border-2 border-pink-100 rounded-2xl">
+                <div class="text-sm">
+                  <span class="text-pink-600 block font-semibold">Tệp đính kèm:</span>
+                  <span class="text-pink-700 font-bold block"><i class="far fa-file-pdf text-red-500 mr-1"></i>
+                    bai5.pdf</span>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                  <button data-pdf="baitap/bai5.pdf"
+                    class="pdf-trigger px-5 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center shadow-sm">
+                    🔍 Xem trước PDF
+                  </button>
+                  <a href="baitap/bai5.pdf" download
+                    class="px-5 py-2.5 bg-white hover:bg-pink-50 text-pink-600 border-2 border-pink-200 font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center">
+                    📥 Tải PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT 6 CARD -->
+        <div id="project-6" class="glass-panel project-card p-6 sm:p-8" data-aos="fade-up">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b-2 border-pink-100 pb-6 mb-6">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-2xl bg-pink-100 border-2 border-pink-200 flex items-center justify-center text-pink-500 text-lg">
+                🐾
+              </div>
+              <div>
+                <span class="text-xs text-pink-500 uppercase tracking-widest font-bold">Bài tập 6 / Exercise 6</span>
+                <h3 class="font-display font-bold text-lg text-[#4d122b] mt-0.5">Sử dụng AI có trách nhiệm trong học tập
+                  và nghiên cứu</h3>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="text-right">
+                <span class="text-xs text-pink-600 block uppercase font-bold">Trạng thái</span>
+                <span class="text-xs font-bold text-emerald-500 block">Hoàn thành 100% 🍪</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Tabs -->
+          <div class="flex gap-2 border-b border-pink-100 text-slate-800 pb-4 mb-6 overflow-x-auto">
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800 active"
+              data-tab="overview">Tổng quan</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="workflow">Quy trình</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="summary">Tóm tắt học thuật</button>
+            <button class="tab-btn px-4 py-2 text-xs font-bold border-2 border-pink-100 text-slate-800"
+              data-tab="preview">File PDF</button>
+          </div>
+
+          <!-- Tab Content Container -->
+          <div class="space-y-6">
+            <!-- TAB: OVERVIEW -->
+            <div id="project-6-overview" class="tab-content active space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Mục tiêu bài tập</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Xây dựng Bộ 7 nguyên tắc đạo đức sử dụng AI cá nhân dựa trên chính sách các trường đại học (ĐHQGHN,
+                    Bách Khoa, FPT), thực hành lập dàn ý xã hội học tích hợp dữ liệu thực tế và trích dẫn chuẩn APA.
+                  </p>
+                </div>
+                <div class="space-y-3">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Từ khóa kỹ năng</h5>
+                  <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Đạo
+                      đức học thuật & Liêm chính 🛡</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Trích
+                      dẫn chuẩn APA cho AI 📄</span>
+                    <span class="px-3 py-1 bg-pink-100 border border-pink-200 rounded-full text-xs font-semibold">Ranh
+                      giới NÊN/KHÔNG NÊN ⚖</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: WORKFLOW -->
+            <div id="project-6-workflow" class="tab-content space-y-4">
+              <div class="border-l-4 border-pink-400 pl-4 space-y-3 text-sm text-slate-800 font-semibold">
+                <div>🐾 <strong>Bước 1:</strong> Đọc chính sách AI tại các trường Đại học (ĐHQGHN, Bách Khoa, FPT) để
+                  nắm vững quy định: AI chỉ là hỗ trợ, trích dẫn rõ ràng và sinh viên chịu trách nhiệm hoàn toàn về sai
+                  sót.</div>
+                <div>🐾 <strong>Bước 2:</strong> Dùng ChatGPT gợi ý dàn ý bài luận môn Xã hội học đề tài "Fast Fashion
+                  đối với Gen Z tại Việt Nam".</div>
+                <div>🐾 <strong>Bước 3:</strong> Sửa đổi dàn ý: Bổ sung hành vi mua sắm qua livestream trên TikTok
+                  Shop/Shopee, bổ sung số liệu rác thải dệt may từ Bộ TN&MT Việt Nam.</div>
+                <div>🐾 <strong>Bước 4:</strong> Viết tuyên bố và nguồn trích dẫn chuẩn APA của AI.</div>
+                <div>🐾 <strong>Bước 5:</strong> Thiết kế Infographic DOs & DON'Ts về đạo đức sử dụng AI.</div>
+              </div>
+            </div>
+
+            <!-- TAB: SUMMARY -->
+            <div id="project-6-summary" class="tab-content space-y-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Tóm tắt học thuật & Điểm nổi bật
+                  </h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    Xác lập bộ 7 nguyên tắc cá nhân: (1) Tư duy trước, AI sau, (2) Người kiểm duyệt cuối cùng, (3) Chỉ
+                    mượn cấu trúc không mượn tư tưởng, (4) Trích dẫn 100%, (5) Bảo mật thông tin, (6) Nâng cao kỹ năng
+                    prompting, (7) Chịu trách nhiệm toàn vẹn. Infographic phân rõ: NÊN dùng AI lên ý tưởng, sửa lỗi hành
+                    văn; KHÔNG NÊN copy-paste nộp nguyên văn bài của AI hay rò rỉ dữ liệu bảo mật lên AI.
+                  </p>
+                </div>
+                <div class="space-y-2">
+                  <h5 class="font-bold text-pink-600 text-xs uppercase tracking-wider">Khó khăn & Cách giải quyết</h5>
+                  <p class="font-semibold text-slate-800 text-base leading-relaxed">
+                    <strong>Khó khăn:</strong> Ý thức tự lực bị đe dọa khi AI có khả năng giải quyết toàn bộ bài tập
+                    trong vài giây.<br>
+                    <strong>Khắc phục:</strong> Giữ vững kỷ luật liêm chính, luôn ghi nhớ "AI không làm bạn thông minh
+                    hơn, nó chỉ giúp bạn nhanh hơn. Tư duy phản biện là của bạn!".
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: PREVIEW -->
+            <div id="project-6-preview" class="tab-content space-y-4">
+              <div
+                class="flex flex-col sm:flex-row gap-4 items-center justify-between p-4 bg-pink-100/50 border-2 border-pink-100 rounded-2xl">
+                <div class="text-sm">
+                  <span class="text-pink-600 block font-semibold">Tệp đính kèm:</span>
+                  <span class="text-pink-700 font-bold block"><i class="far fa-file-pdf text-red-500 mr-1"></i>
+                    Bai6.pdf</span>
+                </div>
+                <div class="flex gap-2 w-full sm:w-auto">
+                  <button data-pdf="baitap/Bai6.pdf"
+                    class="pdf-trigger px-5 py-2.5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center shadow-sm">
+                    🔍 Xem trước PDF
+                  </button>
+                  <a href="baitap/Bai6.pdf" download
+                    class="px-5 py-2.5 bg-white hover:bg-pink-50 text-pink-600 border-2 border-pink-200 font-bold rounded-2xl text-xs transition flex-1 sm:flex-none text-center">
+                    📥 Tải PDF
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  
+  <!-- --- REFLECTION SECTION --- -->
+  <section id="reflection" class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Section Title -->
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="font-display font-bold text-3xl text-pink-600 mb-4">Tổng kết học kỳ 🐾</h2>
+        <div class="w-16 h-1 bg-gradient-to-r from-pink-500 to-rose-400 mx-auto mt-4 rounded-full"></div>
+      </div>
+
+      <!-- Centered Reflection Box (Beautifully aligned and formatted) -->
+      <div class="max-w-7xl mx-auto" data-aos="fade-up">
+        <div class="glass-panel p-8 sm:p-10 space-y-8 text-sm text-slate-800 leading-relaxed font-semibold">
+
+          <!-- Lesson callout box -->
+          <div class="bg-pink-50/70 border-l-4 border-pink-500 p-5 rounded-r-2xl space-y-2 shadow-sm">
+            <h4 class="font-display font-bold text-pink-600 text-lg flex items-center gap-2">
+              🎓 Bài học lớn nhất của tớ
+            </h4>
+            <p class="font-semibold text-slate-800 text-sm sm:text-base sm:text-sm">
+              Trí tuệ nhân tạo (AI) là một trợ thủ đắc lực có tốc độ xử lý phi thường nhưng không thể thay thế cho tư
+              duy phản biện độc lập của người học. Bài học sâu sắc nhất tớ rút ra chính là kỹ thuật viết Prompt cấu trúc
+              rõ ràng để kiểm soát dữ liệu và tinh thần trách nhiệm kiểm chứng chéo thông tin để bảo vệ tính liêm chính
+              trong học thuật.
+            </p>
+          </div>
+
+          <!-- Skills & Challenges Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Left: Skills Card -->
+            <div class="bg-white/60 border border-pink-100 rounded-2xl p-5 space-y-3 shadow-sm">
+              <h4
+                class="font-display font-bold text-pink-600 text-sm flex items-center gap-2 border-b border-pink-100 pb-2">
+                🛠️ Kỹ năng đã tích lũy
+              </h4>
+              <ul class="space-y-2.5 font-semibold text-sm sm:text-base text-slate-800">
+                <li class="flex items-start gap-2">
+                  <span class="text-pink-500 mt-0.5 text-xs">🐾</span>
+                  <span>Thao tác và cấu trúc tệp không dấu khoa học.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-pink-500 mt-0.5 text-xs">🐾</span>
+                  <span>Khai thác Google Scholar bằng toán tử chuyên sâu.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-pink-500 mt-0.5 text-xs">🐾</span>
+                  <span>Thiết kế Prompt 5 yếu tố tối ưu hóa đầu ra.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-pink-500 mt-0.5 text-xs">🐾</span>
+                  <span>Phối hợp làm việc nhóm trực tuyến bằng Trello.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-pink-500 mt-0.5 text-xs">🐾</span>
+                  <span>Quy trình phối hợp đa mô hình AI (GenAI).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-pink-500 mt-0.5 text-xs">🐾</span>
+                  <span>Nguyên tắc trích dẫn APA mẫu cho AI.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Right: Challenges Card -->
+            <div
+              class="bg-white/60 border border-pink-100 rounded-2xl p-5 space-y-4 shadow-sm flex flex-col justify-between">
+              <div>
+                <h4
+                  class="font-display font-bold text-pink-600 text-sm flex items-center gap-2 border-b border-pink-100 pb-2 mb-3">
+                  ⚠️ Thách thức & Khắc phục
+                </h4>
+                <div class="space-y-3 font-semibold text-sm sm:text-base text-slate-800">
+                  <div class="p-2.5 bg-rose-50 border-l-3 border-rose-400 rounded-r-lg">
+                    <strong class="text-pink-700 font-semibold block mb-0.5"><i
+                        class="fas fa-exclamation-triangle text-rose-500 mr-1"></i> Khó khăn:</strong>
+                    Nguy cơ ỷ lại hoàn toàn vào AI làm giảm tính tích cực học tập viết luận.
+                  </div>
+                  <div class="p-2.5 bg-emerald-50 border-l-3 border-emerald-455 rounded-r-lg">
+                    <strong class="text-emerald-700 font-semibold block mb-0.5"><i
+                        class="fas fa-check-circle text-emerald-500 mr-1"></i> Khắc phục:</strong>
+                    Luôn tự phác thảo ý tưởng ra nháp trước khi dùng AI gợi ý chi tiết.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Future direction card -->
+          <div class="bg-amber-50/50 border-l-4 border-amber-400 p-5 rounded-r-2xl space-y-2 shadow-sm">
+            <h4 class="font-display font-bold text-amber-700 text-sm flex items-center gap-2">
+              🚀 Định hướng tương lai
+            </h4>
+            <p class="font-semibold text-slate-800 text-sm sm:text-base leading-relaxed">
+              Tiếp tục tự học, tìm hiểu thêm các mô hình AI mới nhất để ứng dụng vào việc học tập ngôn ngữ và biên soạn
+              giáo án điện tử tiếng Trung. Hướng tới mục tiêu trở thành một chuyên gia ngôn ngữ và công nghệ xuất sắc có
+              tư duy số sáng tạo.
+            </p>
+          </div>
+
+          <!-- Appreciation quotes block -->
+          <div
+            class="relative bg-gradient-to-tr from-pink-50/80 to-white border border-pink-150 p-6 rounded-2xl shadow-inner mt-4">
+            <div
+              class="absolute -top-3 left-6 px-3 bg-[#fff5f6] text-pink-500 text-xs font-bold font-display flex items-center gap-1">
+              <span>🌸</span> Lời cảm ơn chân thành
+            </div>
+            <p class="italic text-sm sm:text-base font-semibold text-slate-800 leading-relaxed pt-2">
+              "Em xin gửi lời cảm ơn sâu sắc tới Ban giám hiệu Trường ĐH Ngoại ngữ - Đại học Quốc gia Hà Nội và đặc biệt
+              là các thầy cô hướng dẫn môn học 'Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo' đã hướng dẫn và
+              trang bị cho em những hành trang kỹ năng số hữu ích trong học phần này."
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="py-12 bg-white relative border-t-2 border-pink-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+
+        <!-- Info left -->
+        <div>
+          <span class="font-display font-bold text-lg text-pink-600 block">Nguyễn Thị Anh Thư 🐾</span>
+          <span class="text-sm sm:text-base text-slate-800 block font-semibold mt-1">Trường ĐH Ngoại ngữ - Đại học Quốc
+            gia Hà Nội</span>
+        </div>
+
+        <!-- Contact details -->
+        <div class="flex flex-col sm:items-end gap-2 text-xs">
+          <span class="text-pink-600 font-bold">Hộp thư trao đổi:</span>
+          <a href="mailto:anhthu.vnu@gmail.com" class="text-gradient hover:underline font-bold text-sm">
+            💌 anhthu.vnu@gmail.com
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Copy right and license details -->
+      <div class="mt-8 pt-8 border-t-2 border-pink-100 text-center text-xs text-pink-600 font-semibold">
+        <p>© 2026 Nguyễn Thị Anh Thư. Môn học Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo - VNU. All Rights
+          Reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- PDF FULLSCREEN VIEW MODAL --- -->
+  <div id="pdf-modal" class="pdf-modal">
+    <div class="pdf-modal-container">
+      <!-- Modal header -->
+      <div class="flex items-center justify-between bg-pink-100 px-6 py-4 border-b-2 border-pink-200">
+        <div class="flex items-center gap-2">
+          <span>📂</span>
+          <span class="text-xs font-bold text-pink-700 uppercase tracking-wider">Trình xem tài liệu học thuật VNU</span>
+        </div>
+        <button id="pdf-modal-close"
+          class="text-slate-800 hover:text-pink-600 focus:outline-none p-1.5 bg-white hover:bg-pink-50 rounded-xl border-2 border-pink-100">
+          <i class="fas fa-times text-sm px-0.5"></i>
+        </button>
+      </div>
+
+      <!-- Iframe container -->
+      <div class="flex-1 w-full bg-white relative">
+        <iframe id="pdf-iframe" class="pdf-iframe" src="about:blank"></iframe>
+      </div>
+
+      <!-- Modal footer -->
+      <div
+        class="bg-pink-100 px-6 py-3 border-t-2 border-pink-200 flex items-center justify-between text-sm sm:text-base text-slate-800 font-semibold">
+        <span>* Chú ý: Nếu PDF không tự động load, thiết bị của bạn có thể không hỗ trợ xem trước iframe.</span>
+        <a id="pdf-fallback-link" href="#" download class="text-pink-600 hover:underline font-bold">
+          📥 Tải trực tiếp PDF về máy
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- AOS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Main Script -->
+  <script src="assets/js/main.js"></script>
+
+  <!-- Init libraries -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize Animate On Scroll
+      if (window.AOS) {
+        AOS.init({
+          duration: 800,
+          once: true,
+          easing: 'ease-out-quad'
+        });
+      }
+
+      // Mobile Menu functionality
+      const menuBtn = document.getElementById("mobile-menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = document.querySelectorAll(".mobile-nav-link");
+
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        mobileLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+      }
+
+      // Scroll Spy
+      const sections = document.querySelectorAll("section");
+      const navLinks = document.querySelectorAll(".nav-link");
+      const backToTop = document.getElementById("back-to-top");
+
+      window.addEventListener("scroll", () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Show/Hide Back to top
+        if (backToTop) {
+          if (scrollTop > 500) {
+            backToTop.classList.remove("hidden");
+            backToTop.classList.add("flex");
+          } else {
+            backToTop.classList.add("hidden");
+            backToTop.classList.remove("flex");
+          }
+        }
+
+        // Header scrolled class
+        const header = document.querySelector(".glass-header");
+        if (header) {
+          if (scrollTop > 20) {
+            header.classList.add("scrolled");
+          } else {
+            header.classList.remove("scrolled");
+          }
+        }
+
+        // Scroll Spy active class selection
+        let currentSectionId = "";
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 120;
+          const height = sec.offsetHeight;
+          if (scrollTop >= top && scrollTop < top + height) {
+            currentSectionId = sec.getAttribute("id");
+          }
+        });
+
+        if (currentSectionId) {
+          navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${currentSectionId}`) {
+              link.classList.add("active");
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
