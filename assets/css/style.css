@@ -7,7 +7,7 @@
 =========================================
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
 
 /* --- CUSTOM PROPERTIES --- */
 :root {
@@ -28,7 +28,7 @@
   --color-success: 142, 60%, 45%; /* Soft Green */
   
   --font-sans: 'Quicksand', sans-serif;
-  --font-display: 'Fredoka', sans-serif;
+  --font-display: '"Baloo 2"', sans-serif;
   --transition-smooth: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
   --shadow-cozy: 0 10px 25px rgba(244, 63, 94, 0.06);
   --shadow-cozy-hover: 0 15px 35px rgba(244, 63, 94, 0.15), 0 0 15px rgba(251, 191, 36, 0.1);
