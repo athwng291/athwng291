@@ -135,7 +135,7 @@ function initSkillRadar() {
     ],
     datasets: [{
       label: 'Mức độ thông thạo (%)',
-      data: [95, 90, 88, 92, 85, 96],
+      data: [100, 100, 100, 100, 100, 100],
       fill: true,
       backgroundColor: 'rgba(236, 72, 153, 0.15)',
       borderColor: 'rgb(219, 39, 119)',
