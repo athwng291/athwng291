@@ -155,10 +155,10 @@ function initSkillRadar() {
       maintainAspectRatio: false,
       layout: {
         padding: {
-          left: 75,
-          right: 75,
-          top: 20,
-          bottom: 20
+          left: 30,
+          right: 30,
+          top: 5,
+          bottom: 5
         }
       },
       scales: {
